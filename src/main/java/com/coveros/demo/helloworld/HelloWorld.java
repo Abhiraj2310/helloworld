@@ -1,15 +1,16 @@
-package com.coveros.demo.helloworld;
+package com.example;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
-public class HelloWorld {
-
-  public static void main(final String[] args) {
-    final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("h:mm:ss a 'on' MMMM d, yyyy'.'");
-    final LocalDateTime now = LocalDateTime.now();
-
-    System.out.println("Hello, World! The current time is " + dtf.format(now));
+public class HelloWorldServlet extends HttpServlet {
+  public void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    response.setContentType("text/html");
+    PrintWriter out = response.getWriter();
+    out.println("<html><head><title>Hello World</title></head>");
+    out.println("<body><h1>Hello World!</h1></body></html>");
   }
-
 }
+
